@@ -158,7 +158,7 @@ Do not mention or specify colors; instead, interpret the image’s mood and ener
           >
             ← Back to Home
           </Button>
-          <h1 className="text-2xl font-bold">Mighty Beanz Generator</h1>
+          <h1 className="text-2xl font-bold">beybladez Generator</h1>
           <Button 
             variant="ghost" 
             onClick={() => navigate('/gallery')}
@@ -174,10 +174,12 @@ Do not mention or specify colors; instead, interpret the image’s mood and ener
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-              Create Your Meme Beanz
+              Create Your beybladez
             </h2>
             <p className="text-gray-300 text-lg">
-              Upload any image and transform it into a pill capsule masterpiece
+              Upload any image and transform it into your personalized beybladez <br />
+              <br />
+              <strong>become the blade.</strong>
             </p>
           </div>
 
@@ -192,7 +194,7 @@ Do not mention or specify colors; instead, interpret the image’s mood and ener
                 disabled={!uploadedImage || isGenerating}
                 className="w-full mt-6 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white border-0 py-3 text-lg font-semibold disabled:opacity-50"
               >
-                {isGenerating ? "Generating..." : "Generate Meme Beanz"}
+                {isGenerating ? "Generating..." : "Generate beybladez"}
               </Button>
             </Card>
 

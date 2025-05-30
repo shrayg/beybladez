@@ -22,7 +22,7 @@ const Gallery = () => {
   const downloadImage = (imageUrl: string, id: number) => {
     const link = document.createElement('a');
     link.href = imageUrl;
-    link.download = `meme-beanz-${id}.png`;
+    link.download = `beybladez-${id}.png`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -55,11 +55,11 @@ const Gallery = () => {
       <main className="container mx-auto px-6 py-12">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-              Generated Meme Beanz Gallery
+            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-5">
+              Generated beybladez Gallery
             </h2>
             <p className="text-gray-300 text-lg">
-              Explore all the amazing pill capsules created by our community
+              Explore all the amazing beybladez created by our community
             </p>
           </div>
 
@@ -68,14 +68,14 @@ const Gallery = () => {
               <div className="text-gray-400 mb-6">
                 <div className="text-6xl mb-4">🎨</div>
                 <h3 className="text-xl font-semibold mb-2">No images generated yet</h3>
-                <p className="text-gray-500">Start creating your first Meme Beanz!</p>
+                <p className="text-gray-500">Start creating your first beybladez!</p>
               </div>
               <Button 
-                onClick={() => navigate('/generator')}
-                className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white border-0 px-8 py-3"
-              >
-                Create Your First Beanz
-              </Button>
+                      onClick={() => navigate('/generator')}
+                      className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white border-0 px-8 py-3"
+                      >
+                      Create Your <strong>beybladez</strong>
+                      </Button>
             </Card>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -84,7 +84,7 @@ const Gallery = () => {
                   <div className="aspect-square rounded-lg overflow-hidden mb-4 bg-white">
                     <img 
                       src={image.url} 
-                      alt={`Generated Meme Beanz ${image.id}`}
+                      alt={`Generated beybladez ${image.id}`}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>

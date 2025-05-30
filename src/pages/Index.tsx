@@ -10,7 +10,7 @@ const Index = () => {
       {/* Header */}
       <header className="p-6">
         <div className="container mx-auto flex justify-between items-center">
-          <h1 className="text-2xl font-bold text-silver-400">Mighty Beanz</h1>
+          <h1 className="text-2xl font-bold text-silver-400">$beybladez</h1>
           <nav className="flex gap-4">
             <Button 
               variant="ghost" 
@@ -33,19 +33,20 @@ const Index = () => {
       {/* Main Content */}
       <main className="container mx-auto px-6 py-20 text-center">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-6xl md:text-8xl font-bold mb-8 bg-gradient-to-r from-gray-400 via-silver-300 to-gray-400 bg-clip-text text-transparent">
-            Mighty Beanz Image Generator
+          <h1 className="text-6xl md:text-8xl mb-8 bg-gradient-to-r from-gray-400 via-silver-300 to-gray-400 bg-clip-text text-transparent">
+            <strong>beybladez</strong>
+            
           </h1>
           
           <p className="text-xl md:text-2xl text-gray-400 mb-12 leading-relaxed">
-            Upload any image and press generate and get your Meme Beanz
+            become the blade
           </p>
 
           {/* Contract Info */}
           <div className="bg-gray-900/80 backdrop-blur-sm rounded-2xl p-8 mb-12 border border-gray-700">
             <h3 className="text-lg font-semibold text-gray-300 mb-4">Official Contract Address (CA):</h3>
             <p className="text-silver-300 font-mono text-sm md:text-base break-all bg-black/50 p-4 rounded-lg border border-gray-600">
-              S4kYvBGEP2AcpC2Nw4BjwhK9oXq7iXrHupwkgmQU7f5
+              //S4kYvBGEP2AcpC2Nw4BjwhK9oXq7iXrHupwkgmQU7f5
             </p>
           </div>
 
