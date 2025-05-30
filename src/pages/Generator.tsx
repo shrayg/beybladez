@@ -50,7 +50,19 @@ const Generator = () => {
 
       console.log("past key");
  
-      const prompt = `Use the uploaded image as the content of the top 80% of a vertical pill-shaped capsule, perfectly centered in a 1:1 square canvas. Render the bottom 20% of the capsule as a smooth, shiny silver metallic surface with subtle specular highlights, gentle gradient shading, and a faint reflection. Place the capsule on a uniform white background. The entire illustration should appear as a realistic artwork: realistic reflections, metal light diffusion, hard edges, realistic shadows, diffuse lighting. Ensure the uploaded image's proportions and details are preserved, seamlessly integrated into the pill's upper half. Finally, add a very soft drop shadow beneath the capsule to ground it on the canvas.`;
+      const prompt = `Create a hyper-realistic Beyblade image inspired by the provided image, using it as the core source of personality, mood, and design influence. Seamlessly integrate the image as the central medallion beneath a polished, glass-like dome at the center of the Beyblade. Generate 1:1 scale image that is 1024x1024 scale.
+
+Surround the core with a custom-designed energy layer, featuring sharp, dynamic patterns and intricate mechanical details that reflect the energy, style, and personality of the supplied image.
+
+Design outer forged metallic rings with detailed engravings and a layered, engineered structure, emphasizing performance and craftsmanship. Include premium, realistic surface textures—showing every scratch, reflection, and subtle material transition.
+
+The Beyblade should look like a real, high-performance, tournament-grade top: use studio-quality, diffused lighting to highlight metallic finishes, glass reflections, and the complexity of the design.
+
+Set the Beyblade on a neutral, softly textured background, slightly blurred to maintain focus on the object.
+
+Render the scene as if photographed with a professional DSLR camera using a 50mm macro lens at a 30-degree downward angle, ensuring maximum depth, sharpness, and realism.
+
+Do not mention or specify colors; instead, interpret the image’s mood and energy visually in the design choices, materials, and forms. Use the provided image to determine the coloring and components of the beyblade. The personality of the provided image should be reflected in the beyblade as a persona.`;
 
       // Use the first image from appImage array
       const imageObj = appImage[0];
@@ -83,7 +95,7 @@ const Generator = () => {
       }
 
       const response = await openai.responses.create({
-        model: "gpt-4.1",
+        model: "gpt-4o",
         input: [
           {
             role: "user",
