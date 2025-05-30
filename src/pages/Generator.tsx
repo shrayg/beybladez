@@ -50,7 +50,7 @@ const Generator = () => {
 
       console.log("past key");
  
-      const prompt = `Create a hyper-realistic Beyblade image inspired by the provided image, using it as the core source of personality, mood, and design influence. Seamlessly integrate the image as the central medallion beneath a polished, glass-like dome at the center of the Beyblade. Generate 1:1 scale image that is 1024x1024 scale.
+      const prompt = `Create a hyper-realistic Beyblade image inspired by the provided image, using it as the core source of personality, mood, and design influence. Seamlessly integrate the image as the central medallion as a polished, metalic circle or hexagonal shape at the center of the Beyblade. Generate 1:1 scale image that is 1024x1024 scale.
 
 Surround the core with a custom-designed energy layer, featuring sharp, dynamic patterns and intricate mechanical details that reflect the energy, style, and personality of the supplied image.
 
@@ -62,7 +62,7 @@ Set the Beyblade on a neutral, softly textured background, slightly blurred to m
 
 Render the scene as if photographed with a professional DSLR camera using a 50mm macro lens at a 30-degree downward angle, ensuring maximum depth, sharpness, and realism.
 
-Do not mention or specify colors; instead, interpret the image’s mood and energy visually in the design choices, materials, and forms. Use the provided image to determine the coloring and components of the beyblade. The personality of the provided image should be reflected in the beyblade as a persona.`;
+Do not mention or specify colors; instead, interpret the images mood and energy visually in the design choices, materials, and forms. Use the provided image to determine the coloring and components of the beyblade. The personality of the provided image should be reflected in the beyblade as a persona.`;
 
       // Use the first image from appImage array
       const imageObj = appImage[0];
