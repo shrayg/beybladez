@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
 
+import { supabase } from '@/lib/supabaseClient'
+
 interface GeneratedImage {
   id: number;
   url: string;
@@ -15,9 +17,33 @@ const Gallery = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const storedImages = JSON.parse(localStorage.getItem('generatedImages') || '[]');
-    setImages(storedImages);
-  }, []);
+  // wrap in an async fn because useEffect callbacks can’t be `async` directly
+  const fetchImages = async () => {
+    const { data, error } = await supabase
+      .from('images')
+      .select<'id, url, created_at'>('id, url, created_at')
+      .order('created_at', { ascending: false })
+
+    if (error) {
+      console.error('Failed to fetch images:', error)
+      return
+    }
+
+    if (data) {
+      setImages(
+        data.map(img => ({
+          id: img.id,
+          url: img.url,
+          // our table column is `created_at`
+          timestamp: img.created_at
+        }))
+      )
+    }
+  }
+
+  fetchImages()
+}, [])
+
 
   const downloadImage = (imageUrl: string, id: number) => {
     const link = document.createElement('a');

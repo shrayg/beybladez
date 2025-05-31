@@ -7,6 +7,7 @@ import { useToast } from "@/hooks/use-toast";
 import ImageUpload from "@/components/ImageUpload";
 import GeneratedImage from "@/components/GeneratedImage";
 import OpenAI from "openai";
+import { supabase, supabaseAdmin  } from '@/lib/supabaseClient'
 
 
 const Generator = () => {
@@ -125,6 +126,65 @@ Do not mention or specify colors; instead, interpret the images mood and energy 
         title: "Image generated successfully!",
         description: "Your generated image is ready.",
       });
+      
+      // Save the generated image to Supabase
+      const dataURL = `data:image/png;base64,${generatedImageBase64}`;
+
+      // Convert to blob
+      const res = await fetch(dataURL);
+      const blob = await res.blob();
+
+      // Upload to Supabase Storage
+      const fileName = `beybladez-${Date.now()}.png`;
+      const { error: upLoadErr } = await supabaseAdmin 
+        .storage
+        .from('beybladez-images')
+        .upload(fileName, blob, { contentType: 'image/png' });
+      if (upLoadErr) {
+        console.error("Storage upload error:", upLoadErr);
+        console.error("Error message:", upLoadErr.message);
+        throw upLoadErr;
+      }
+
+      // Get public URL of the uploaded image
+       // 1) pull out both data and error
+      const { data } = supabaseAdmin 
+        .storage
+        .from('beybladez-images')
+        .getPublicUrl(fileName);
+
+      // 2) guard against missing data
+      if (!data || !data.publicUrl) {
+        console.error('getPublicUrl failed: Missing public URL');
+        throw new Error('Failed to retrieve public URL');
+      }
+
+      // 3) now safely grab the URL
+      const publicUrl = data.publicUrl;
+
+      console.log("About to insert with URL:", publicUrl);
+      console.log("User ID being used:", null); // Since we're not setting one
+
+      // insert a row into the images table  
+      const {error: dbErr } = await supabaseAdmin 
+        .from('images')
+        .insert({
+          url:publicUrl,
+          user_id: null
+        });
+      if (dbErr) {
+        console.error("Detailed insert error:", dbErr);
+        console.error("Error code:", dbErr.code);
+        console.error("Error message:", dbErr.message);
+        console.error("Error details:", dbErr.details);
+        throw dbErr;
+      } 
+
+      //Image saved notifaation
+      
+      toast({ title: "Image saved to gallery!" });
+
+
     } else {
       toast({
         title: "Generation failed",
