@@ -22,5 +22,16 @@
     <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
     <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
     <script type="module" src="/src/main.tsx"></script>
+    <script type="module">
+    import { injectSpeedInsights } from '@vercel/speed-insights';
+
+    // By default, this sends 100% of events. You can pass { sampleRate: 0.5 } to send 50%, etc.
+    injectSpeedInsights({
+      // sampleRate: 1,    // send all events (default)
+      // debug: true,      // log events to console (optional, only for dev)
+      // beforeSend: (evt) => { /* filter or modify evt */ return evt; }
+    });
+  </script>
+
   </body>
 </html>
