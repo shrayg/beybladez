@@ -64,13 +64,6 @@ const Index = () => {
             </Button>
             <Button
               variant="ghost"
-              onClick={() => navigate('/beyblade')}
-              className="text-silver-300 hover:bg-gray-900 border border-gray-700 hover:border-silver-400"
-            >
-              Let it rip.
-            </Button>
-            <Button
-              variant="ghost"
               onClick={() => navigate('/gallery')}
               className="text-silver-300 hover:bg-gray-900 border border-gray-700 hover:border-silver-400"
             >
