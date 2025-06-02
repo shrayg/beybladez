@@ -10,7 +10,7 @@ const Index = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleCopy = () => {
-    const textToCopy = "---CONTRACT ADDRESS SOON---";
+    const textToCopy = "D61PppuNDaLipUZvf2UBbAXk1FKr5ar2vxUtCcqypump";
     navigator.clipboard.writeText(textToCopy);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
