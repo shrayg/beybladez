@@ -64,7 +64,7 @@ const Index = () => {
               className="text-silver-300 hover:bg-gray-900 border border-gray-700 hover:border-silver-400"
             >
               <a 
-                href="https://x.com/i/communities/1927305352602640601"
+                href="https://x.com/i/communities/1928460541435273435"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2"
