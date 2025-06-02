@@ -156,7 +156,7 @@ const Index = () => {
           <div className="flex flex-col gap-4 p-6 md:p-10 rounded-lg shadow-lg bg-gradient-to-r from-gray-800 to-gray-700 gap-2 hover:bg-[length:200%_200%] hover:bg-right text-silver-300 border border-gray-600 transition-all duration-700 group animate-fade-in" style={{ backgroundSize: '200% 200%', backgroundPosition: 'left', animationDelay: '0.6s' }}>
             <h1 className="text-lg md:text-xg font-semibold text-gray-300">Official Contract Address (CA):</h1>
             <code className="flex flex-col md:flex-row justify-between items-center text-silver-300 font-mono text-sm md:text-base break-all bg-black/20 p-2 rounded-lg border border-white/10 transition-all duration-300 group-hover:border-white/30 group-hover:bg-black/30">
-              <span className="flex-1 text-center mb-2 md:mb-0">---CONTRACT ADDRESS SOON---</span>
+              <span className="flex-1 text-center mb-2 md:mb-0">D61PppuNDaLipUZvf2UBbAXk1FKr5ar2vxUtCcqypump</span>
               <div
                 onClick={handleCopy}
                 className="p-1 cursor-pointer flex flex-col gap-4 rounded border-[1px] border-white/10 hover:bg-white/10 transition-colors relative"
