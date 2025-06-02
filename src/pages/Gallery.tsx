@@ -62,10 +62,10 @@ const Gallery = () => {
           <div className="flex justify-start">
             <Button
               variant="ghost"
-              onClick={() => navigate('/beyblade')}
+              onClick={() => navigate('/')}
               className="text-white hover:bg-white/10"
             >
-              /beyblade
+                            ← Back to Home
             </Button>
           </div>
 

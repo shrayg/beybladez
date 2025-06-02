@@ -214,10 +214,10 @@ Do not mention or specify colors; instead, interpret the images mood and energy 
           <div className="flex justify-start">
             <Button
               variant="ghost"
-              onClick={() => navigate('/beyblade')}
+              onClick={() => navigate('/')}
               className="text-white hover:bg-white/10"
             >
-              /beyblade
+                            ← Back to Home
             </Button>
           </div>
 
@@ -268,13 +268,13 @@ Do not mention or specify colors; instead, interpret the images mood and energy 
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-              Create Your beybladez
+              Create Your $beybladez
             </h2>
             <p className="text-gray-300 text-lg">
               Upload any image and transform it into your personalized beybladez <br />
               <br />
-              <strong>become the blade.</strong>
             </p>
+            <h2 className="text-2xl text-gray-400 mt-4"><strong>become the blade.</strong></h2>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
