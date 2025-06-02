@@ -9,6 +9,7 @@ import Generator from "./pages/Generator";
 import Gallery from "./pages/Gallery";
 import Beyblade from "./pages/Beyblade";
 import NotFound from "./pages/NotFound";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const queryClient = new QueryClient();
 
