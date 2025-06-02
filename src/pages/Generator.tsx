@@ -211,36 +211,25 @@ Do not mention or specify colors; instead, interpret the images mood and energy 
     <div className="flex flex-col h-screen bg-black text-white">
       {/* Header */}
       <header className="p-6 flex-shrink-0">
-        <div className="container mx-auto grid grid-cols-3 items-center">
-          {/* Left navigation - hidden on mobile */}
-          <div className="hidden md:flex justify-start">
+        <div className="container mx-auto flex items-center justify-between">
+          {/* Left: Back to Home (desktop only) */}
+          <div className="hidden md:flex flex-shrink-0">
             <Button
               variant="ghost"
-              onClick={() => navigate('/')}
+              onClick={() => navigate('/')} 
               className="text-white hover:bg-white/10"
             >
               ← Back to Home
             </Button>
           </div>
 
-          {/* Title - centered on desktop, left on mobile */}
-          <div className="flex md:justify-center col-start-1 md:col-start-2">
+          {/* Center: Title */}
+          <div className="flex-1 flex justify-center">
             <h1 className="text-2xl font-bold">beybladez Generator</h1>
           </div>
 
-          {/* Mobile Menu Button - right aligned */}
-          <div className="flex justify-end">
-            <Button
-              variant="ghost"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden text-silver-300 hover:bg-gray-900 border border-gray-700 hover:border-silver-400"
-            >
-              <Menu size={24} />
-            </Button>
-          </div>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex justify-end gap-4">
+          {/* Right: Desktop Navigation */}
+          <nav className="hidden md:flex gap-4 flex-shrink-0">
             <Button
               variant="ghost"
               onClick={() => navigate('/gallery')}
@@ -273,6 +262,17 @@ Do not mention or specify colors; instead, interpret the images mood and energy 
               </a>
             </Button>
           </nav>
+
+          {/* Mobile Menu Button - right aligned */}
+          <div className="flex md:hidden justify-end">
+            <Button
+              variant="ghost"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="text-silver-300 hover:bg-gray-900 border border-gray-700 hover:border-silver-400"
+            >
+              <Menu size={24} />
+            </Button>
+          </div>
         </div>
 
         {/* Mobile Navigation Menu */}
