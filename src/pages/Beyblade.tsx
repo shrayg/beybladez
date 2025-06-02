@@ -17,13 +17,13 @@ interface BeybladeGameProps {
  * 
  * This component embeds the Beyblade game from itch.io directly into a React/Vite application.
  * It handles responsive sizing, loading states, and provides fallback content if embedding fails.
+ * The game container automatically fills the screen space below the header with no scrolling.
  * 
  * @param {BeybladeGameProps} props - Component properties
  * @returns {JSX.Element} - The rendered component
  */
 const BeybladeGame: React.FC<BeybladeGameProps> = ({
     width = '100%',
-    height = '1000px',
     allowFullscreen = true,
     className = '',
     style = {},
@@ -32,6 +32,8 @@ const BeybladeGame: React.FC<BeybladeGameProps> = ({
     const [hasError, setHasError] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const iframeRef = useRef<HTMLIFrameElement>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
+    const headerRef = useRef<HTMLDivElement>(null);
     const navigate = useNavigate();
 
     // The direct URL to the game
@@ -61,24 +63,31 @@ const BeybladeGame: React.FC<BeybladeGameProps> = ({
         return () => clearTimeout(timeoutId);
     }, [isLoading]);
 
-    // Attempt to make the iframe responsive to window resize
+    // Effect to adjust game container height based on viewport and header height
     useEffect(() => {
-        const handleResize = () => {
-            if (iframeRef.current) {
-                // You could add additional responsive logic here if needed
-                console.log('Window resized, iframe dimensions may need adjustment');
+        const adjustHeight = () => {
+            if (containerRef.current && headerRef.current) {
+                const viewportHeight = window.innerHeight;
+                const headerHeight = headerRef.current.offsetHeight;
+                const newHeight = viewportHeight - headerHeight;
+                
+                // Set the container height to fill remaining space
+                containerRef.current.style.height = `${newHeight}px`;
             }
         };
 
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
+        // Initial adjustment
+        adjustHeight();
+
+        // Adjust on window resize
+        window.addEventListener('resize', adjustHeight);
+        return () => window.removeEventListener('resize', adjustHeight);
     }, []);
 
     // Container styles for responsive design
     const containerStyle: React.CSSProperties = {
         position: 'relative',
         width: typeof width === 'number' ? `${width}px` : width,
-        height: typeof height === 'number' ? `${height}px` : height,
         overflow: 'hidden',
         borderRadius: '8px',
         boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
@@ -117,9 +126,9 @@ const BeybladeGame: React.FC<BeybladeGameProps> = ({
     };
 
     return (
-        <div className="min-h-screen bg-black text-white">
+        <div className="flex flex-col h-screen bg-black text-white overflow-hidden">
             {/* Header */}
-            <header className="p-6">
+            <header ref={headerRef} className="p-6 flex-shrink-0">
                 <div className="container mx-auto grid grid-cols-3 items-center">
                     {/* Left navigation - hidden on mobile */}
                     <div className="hidden md:flex justify-start">
@@ -226,8 +235,11 @@ const BeybladeGame: React.FC<BeybladeGameProps> = ({
                     </nav>
                 )}
             </header>
+            
+            {/* Game container - flex-grow-1 makes it fill all remaining space */}
             <div
-                className={`beyblade-game-container ${className}`}
+                ref={containerRef}
+                className={`beyblade-game-container flex-grow ${className}`}
                 style={containerStyle}
                 data-testid="beyblade-game-container"
             >
