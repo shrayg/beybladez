@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -17,7 +16,7 @@ const Gallery = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-  // wrap in an async fn because useEffect callbacks can’t be `async` directly
+  // wrap in an async fn because useEffect callbacks can't be `async` directly
   const fetchImages = async () => {
     const { data, error } = await supabase
       .from('images')
@@ -55,30 +54,65 @@ const Gallery = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="flex flex-col h-screen bg-black text-white">
       {/* Header */}
-      <header className="p-6">
-        <div className="container mx-auto flex justify-between items-center">
-          <Button 
-            variant="ghost" 
-            onClick={() => navigate('/')}
-            className="text-white hover:bg-white/10"
-          >
-            ← Back to Home
-          </Button>
-          <h1 className="text-2xl font-bold">Gallery</h1>
-          <Button 
-            variant="ghost" 
-            onClick={() => navigate('/generator')}
-            className="text-white hover:bg-white/10 border border-white/20"
-          >
-            Generator
-          </Button>
+      <header className="p-6 flex-shrink-0">
+        <div className="container mx-auto grid grid-cols-3 items-center">
+          {/* Left navigation */}
+          <div className="flex justify-start">
+            <Button 
+              variant="ghost" 
+              onClick={() => navigate('/beyblade')}
+              className="text-white hover:bg-white/10"
+            >
+              /beyblade
+            </Button>
+          </div>
+          
+          {/* Centered title */}
+          <div className="flex justify-center">
+            <h1 className="text-2xl text-center font-bold">Gallery</h1>
+          </div>
+          
+          {/* Right navigation */}
+          <nav className="flex justify-end gap-4">
+            <Button 
+              variant="ghost"
+              onClick={() => navigate('/generator')}
+              className="text-silver-300 hover:bg-gray-900 border border-gray-700 hover:border-silver-400"
+            >
+              Generator
+            </Button>
+            <Button 
+              variant="ghost"
+              onClick={() => navigate('/beyblade')}
+              className="text-silver-300 hover:bg-gray-900 border border-gray-700 hover:border-silver-400"
+            >
+              Let it rip.
+            </Button>
+            <Button
+              asChild
+              variant="ghost"
+              className="text-silver-300 hover:bg-gray-900 border border-gray-700 hover:border-silver-400"
+            >
+              <a 
+                href="https://x.com/i/communities/1928460541435273435"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2"
+              >
+                <svg width="16" height="16" viewBox="0 0 300 301" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M178.57 127.044L290.27 0H263.81L166.78 110.288L89.34 0H0L117.13 166.791L0 300H26.46L128.86 183.507L210.66 300H300M36.01 19.5237H76.66L263.79 281.435H223.13" fill="currentColor"/>
+                </svg>
+                <span>Community</span>
+              </a>
+            </Button>
+          </nav>
         </div>
       </header>
 
       {/* Main Content */}
-      <main className="container mx-auto px-6 py-12">
+      <main className="flex-grow container mx-auto px-6 py-12 overflow-y-auto">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-5">
