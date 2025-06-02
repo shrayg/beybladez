@@ -16,32 +16,32 @@ const Gallery = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-  // wrap in an async fn because useEffect callbacks can't be `async` directly
-  const fetchImages = async () => {
-    const { data, error } = await supabase
-      .from('images')
-      .select<'id, url, created_at'>('id, url, created_at')
-      .order('created_at', { ascending: false })
+    // wrap in an async fn because useEffect callbacks can't be `async` directly
+    const fetchImages = async () => {
+      const { data, error } = await supabase
+        .from('images')
+        .select<'id, url, created_at'>('id, url, created_at')
+        .order('created_at', { ascending: false })
 
-    if (error) {
-      console.error('Failed to fetch images:', error)
-      return
+      if (error) {
+        console.error('Failed to fetch images:', error)
+        return
+      }
+
+      if (data) {
+        setImages(
+          data.map(img => ({
+            id: img.id,
+            url: img.url,
+            // our table column is `created_at`
+            timestamp: img.created_at
+          }))
+        )
+      }
     }
 
-    if (data) {
-      setImages(
-        data.map(img => ({
-          id: img.id,
-          url: img.url,
-          // our table column is `created_at`
-          timestamp: img.created_at
-        }))
-      )
-    }
-  }
-
-  fetchImages()
-}, [])
+    fetchImages()
+  }, [])
 
 
   const downloadImage = (imageUrl: string, id: number) => {
@@ -60,30 +60,30 @@ const Gallery = () => {
         <div className="container mx-auto grid grid-cols-3 items-center">
           {/* Left navigation */}
           <div className="flex justify-start">
-            <Button 
-              variant="ghost" 
+            <Button
+              variant="ghost"
               onClick={() => navigate('/beyblade')}
               className="text-white hover:bg-white/10"
             >
               /beyblade
             </Button>
           </div>
-          
+
           {/* Centered title */}
           <div className="flex justify-center">
             <h1 className="text-2xl text-center font-bold">Gallery</h1>
           </div>
-          
+
           {/* Right navigation */}
           <nav className="flex justify-end gap-4">
-            <Button 
+            <Button
               variant="ghost"
               onClick={() => navigate('/generator')}
               className="text-silver-300 hover:bg-gray-900 border border-gray-700 hover:border-silver-400"
             >
               Generator
             </Button>
-            <Button 
+            <Button
               variant="ghost"
               onClick={() => navigate('/beyblade')}
               className="text-silver-300 hover:bg-gray-900 border border-gray-700 hover:border-silver-400"
@@ -95,14 +95,14 @@ const Gallery = () => {
               variant="ghost"
               className="text-silver-300 hover:bg-gray-900 border border-gray-700 hover:border-silver-400"
             >
-              <a 
+              <a
                 href="https://x.com/i/communities/1928460541435273435"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2"
               >
                 <svg width="16" height="16" viewBox="0 0 300 301" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M178.57 127.044L290.27 0H263.81L166.78 110.288L89.34 0H0L117.13 166.791L0 300H26.46L128.86 183.507L210.66 300H300M36.01 19.5237H76.66L263.79 281.435H223.13" fill="currentColor"/>
+                  <path d="M178.57 127.044L290.27 0H263.81L166.78 110.288L89.34 0H0L117.13 166.791L0 300H26.46L128.86 183.507L210.66 300H300M36.01 19.5237H76.66L263.79 281.435H223.13" fill="currentColor" />
                 </svg>
                 <span>Community</span>
               </a>
@@ -130,20 +130,20 @@ const Gallery = () => {
                 <h3 className="text-xl font-semibold mb-2">No images generated yet</h3>
                 <p className="text-gray-500">Start creating your first beybladez!</p>
               </div>
-              <Button 
-                      onClick={() => navigate('/generator')}
-                      className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white border-0 px-8 py-3"
-                      >
-                      Create Your <strong>beybladez</strong>
-                      </Button>
+              <Button
+                onClick={() => navigate('/generator')}
+                className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white border-0 px-8 py-3"
+              >
+                Create Your <strong>beybladez</strong>
+              </Button>
             </Card>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {images.map((image) => (
                 <Card key={image.id} className="bg-black/40 backdrop-blur-sm border-white/10 p-4 hover:border-purple-400/30 transition-all duration-300 group">
                   <div className="aspect-square rounded-lg overflow-hidden mb-4 bg-white">
-                    <img 
-                      src={image.url} 
+                    <img
+                      src={image.url}
                       alt={`Generated beybladez ${image.id}`}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
@@ -152,7 +152,7 @@ const Gallery = () => {
                     <span className="text-sm text-gray-400">
                       {new Date(image.timestamp).toLocaleDateString()}
                     </span>
-                    <Button 
+                    <Button
                       size="sm"
                       onClick={() => downloadImage(image.url, image.id)}
                       className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white border-0"

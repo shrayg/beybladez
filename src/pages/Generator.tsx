@@ -6,7 +6,7 @@ import { useToast } from "@/hooks/use-toast";
 import ImageUpload from "@/components/ImageUpload";
 import GeneratedImage from "@/components/GeneratedImage";
 import OpenAI from "openai";
-import { supabase, supabaseAdmin  } from '@/lib/supabaseClient'
+import { supabase, supabaseAdmin } from '@/lib/supabaseClient'
 
 
 const Generator = () => {
@@ -22,7 +22,7 @@ const Generator = () => {
     setUploadedImage(imageUrl);
     setGeneratedImage(null);
     setDone(false);
-    
+
     // Convert the uploaded image to the format expected by your script
     fetch(imageUrl)
       .then(res => res.blob())
@@ -49,7 +49,7 @@ const Generator = () => {
       });
 
       console.log("past key");
- 
+
       const prompt = `Create a hyper-realistic Beyblade image inspired by the provided image, using it as the core source of personality, mood, and design influence. Seamlessly integrate the image as the central medallion as a polished, metalic circle or hexagonal shape at the center of the Beyblade. Generate 1:1 scale image that is 1024x1024 scale.
 
 Surround the core with a custom-designed energy layer, featuring sharp, dynamic patterns and intricate mechanical details that reflect the energy, style, and personality of the supplied image.
@@ -110,7 +110,7 @@ Do not mention or specify colors; instead, interpret the images mood and energy 
             ],
           },
         ],
-        tools: [{type: "image_generation"}],
+        tools: [{ type: "image_generation" }],
       });
 
       const imageData = response.output
@@ -118,90 +118,90 @@ Do not mention or specify colors; instead, interpret the images mood and energy 
         .map((output) => output.result);
 
       // Assuming the generated image is returned as a base64 string in the message content:
-    const generatedImageBase64 = imageData[0]; //response.choices[0].message.content.trim();
-    if (generatedImageBase64) {
-      setGeneratedImage(`data:image/png;base64,${generatedImageBase64}`);
-      toast({
-        title: "Image generated successfully!",
-        description: "Your generated image is ready.",
-      });
-      
-      // Save the generated image to Supabase
-      const dataURL = `data:image/png;base64,${generatedImageBase64}`;
-
-      // Convert to blob
-      const res = await fetch(dataURL);
-      const blob = await res.blob();
-
-      // Upload to Supabase Storage
-      const fileName = `beybladez-${Date.now()}.png`;
-      const { error: upLoadErr } = await supabaseAdmin 
-        .storage
-        .from('beybladez-images')
-        .upload(fileName, blob, { contentType: 'image/png' });
-      if (upLoadErr) {
-        console.error("Storage upload error:", upLoadErr);
-        console.error("Error message:", upLoadErr.message);
-        throw upLoadErr;
-      }
-
-      // Get public URL of the uploaded image
-       // 1) pull out both data and error
-      const { data } = supabaseAdmin 
-        .storage
-        .from('beybladez-images')
-        .getPublicUrl(fileName);
-
-      // 2) guard against missing data
-      if (!data || !data.publicUrl) {
-        console.error('getPublicUrl failed: Missing public URL');
-        throw new Error('Failed to retrieve public URL');
-      }
-
-      // 3) now safely grab the URL
-      const publicUrl = data.publicUrl;
-
-      console.log("About to insert with URL:", publicUrl);
-      console.log("User ID being used:", null); // Since we're not setting one
-
-      // insert a row into the images table  
-      const {error: dbErr } = await supabaseAdmin 
-        .from('images')
-        .insert({
-          url:publicUrl,
-          user_id: null
+      const generatedImageBase64 = imageData[0]; //response.choices[0].message.content.trim();
+      if (generatedImageBase64) {
+        setGeneratedImage(`data:image/png;base64,${generatedImageBase64}`);
+        toast({
+          title: "Image generated successfully!",
+          description: "Your generated image is ready.",
         });
-      if (dbErr) {
-        console.error("Detailed insert error:", dbErr);
-        console.error("Error code:", dbErr.code);
-        console.error("Error message:", dbErr.message);
-        console.error("Error details:", dbErr.details);
-        throw dbErr;
-      } 
 
-      //Image saved notifaation
-      
-      toast({ title: "Image saved to gallery!" });
+        // Save the generated image to Supabase
+        const dataURL = `data:image/png;base64,${generatedImageBase64}`;
+
+        // Convert to blob
+        const res = await fetch(dataURL);
+        const blob = await res.blob();
+
+        // Upload to Supabase Storage
+        const fileName = `beybladez-${Date.now()}.png`;
+        const { error: upLoadErr } = await supabaseAdmin
+          .storage
+          .from('beybladez-images')
+          .upload(fileName, blob, { contentType: 'image/png' });
+        if (upLoadErr) {
+          console.error("Storage upload error:", upLoadErr);
+          console.error("Error message:", upLoadErr.message);
+          throw upLoadErr;
+        }
+
+        // Get public URL of the uploaded image
+        // 1) pull out both data and error
+        const { data } = supabaseAdmin
+          .storage
+          .from('beybladez-images')
+          .getPublicUrl(fileName);
+
+        // 2) guard against missing data
+        if (!data || !data.publicUrl) {
+          console.error('getPublicUrl failed: Missing public URL');
+          throw new Error('Failed to retrieve public URL');
+        }
+
+        // 3) now safely grab the URL
+        const publicUrl = data.publicUrl;
+
+        console.log("About to insert with URL:", publicUrl);
+        console.log("User ID being used:", null); // Since we're not setting one
+
+        // insert a row into the images table  
+        const { error: dbErr } = await supabaseAdmin
+          .from('images')
+          .insert({
+            url: publicUrl,
+            user_id: null
+          });
+        if (dbErr) {
+          console.error("Detailed insert error:", dbErr);
+          console.error("Error code:", dbErr.code);
+          console.error("Error message:", dbErr.message);
+          console.error("Error details:", dbErr.details);
+          throw dbErr;
+        }
+
+        //Image saved notifaation
+
+        toast({ title: "Image saved to gallery!" });
 
 
-    } else {
+      } else {
+        toast({
+          title: "Generation failed",
+          description: "Failed to generate image.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      console.error("Error generating image:", error);
       toast({
         title: "Generation failed",
-        description: "Failed to generate image.",
+        description: "An error occurred while generating the image.",
         variant: "destructive",
       });
-    }  
-  } catch (error) {
-    console.error("Error generating image:", error);
-    toast({
-      title: "Generation failed",
-      description: "An error occurred while generating the image.",
-      variant: "destructive",
-    });
-  } finally {
-    setIsGenerating(false);
-    setDone(true);
-  }
+    } finally {
+      setIsGenerating(false);
+      setDone(true);
+    }
   };
 
 
@@ -212,30 +212,30 @@ Do not mention or specify colors; instead, interpret the images mood and energy 
         <div className="container mx-auto grid grid-cols-3 items-center">
           {/* Left navigation */}
           <div className="flex justify-start">
-            <Button 
-              variant="ghost" 
+            <Button
+              variant="ghost"
               onClick={() => navigate('/beyblade')}
               className="text-white hover:bg-white/10"
             >
               /beyblade
             </Button>
           </div>
-          
+
           {/* Centered title */}
           <div className="flex justify-center">
             <h1 className="text-2xl text-center font-bold">beybladez Generator</h1>
           </div>
-          
+
           {/* Right navigation */}
           <nav className="flex justify-end gap-4">
-            <Button 
+            <Button
               variant="ghost"
               onClick={() => navigate('/gallery')}
               className="text-silver-300 hover:bg-gray-900 border border-gray-700 hover:border-silver-400"
             >
               Gallery
             </Button>
-            <Button 
+            <Button
               variant="ghost"
               onClick={() => navigate('/beyblade')}
               className="text-silver-300 hover:bg-gray-900 border border-gray-700 hover:border-silver-400"
@@ -247,14 +247,14 @@ Do not mention or specify colors; instead, interpret the images mood and energy 
               variant="ghost"
               className="text-silver-300 hover:bg-gray-900 border border-gray-700 hover:border-silver-400"
             >
-              <a 
+              <a
                 href="https://x.com/i/communities/1928460541435273435"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2"
               >
                 <svg width="16" height="16" viewBox="0 0 300 301" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M178.57 127.044L290.27 0H263.81L166.78 110.288L89.34 0H0L117.13 166.791L0 300H26.46L128.86 183.507L210.66 300H300M36.01 19.5237H76.66L263.79 281.435H223.13" fill="currentColor"/>
+                  <path d="M178.57 127.044L290.27 0H263.81L166.78 110.288L89.34 0H0L117.13 166.791L0 300H26.46L128.86 183.507L210.66 300H300M36.01 19.5237H76.66L263.79 281.435H223.13" fill="currentColor" />
                 </svg>
                 <span>Community</span>
               </a>
@@ -282,8 +282,8 @@ Do not mention or specify colors; instead, interpret the images mood and energy 
             <Card className="bg-black/40 backdrop-blur-sm border-white/10 p-6">
               <h3 className="text-xl font-semibold mb-6 text-white">Upload Image</h3>
               <ImageUpload onImageUpload={handleImageUpload} />
-              
-              <Button 
+
+              <Button
                 onClick={generateImage}
                 disabled={!uploadedImage || isGenerating}
                 className="w-full mt-6 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white border-0 py-3 text-lg font-semibold disabled:opacity-50"
@@ -295,8 +295,8 @@ Do not mention or specify colors; instead, interpret the images mood and energy 
             {/* Result Section */}
             <Card className="bg-black/40 backdrop-blur-sm border-white/10 p-6">
               <h3 className="text-xl font-semibold mb-6 text-white">Generated Result</h3>
-              <GeneratedImage 
-                imageUrl={generatedImage} 
+              <GeneratedImage
+                imageUrl={generatedImage}
                 isGenerating={isGenerating}
               />
             </Card>
