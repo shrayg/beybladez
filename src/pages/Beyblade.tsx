@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
+import { Menu } from "lucide-react";
 
 interface BeybladeGameProps {
     width?: string | number;
@@ -29,6 +30,7 @@ const BeybladeGame: React.FC<BeybladeGameProps> = ({
 }) => {
     const [isLoading, setIsLoading] = useState(true);
     const [hasError, setHasError] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
     const iframeRef = useRef<HTMLIFrameElement>(null);
     const navigate = useNavigate();
 
@@ -119,8 +121,8 @@ const BeybladeGame: React.FC<BeybladeGameProps> = ({
             {/* Header */}
             <header className="p-6">
                 <div className="container mx-auto grid grid-cols-3 items-center">
-                    {/* Left navigation */}
-                    <div className="flex justify-start">
+                    {/* Left navigation - hidden on mobile */}
+                    <div className="hidden md:flex justify-start">
                         <Button
                             variant="ghost"
                             onClick={() => navigate('/')}
@@ -135,8 +137,17 @@ const BeybladeGame: React.FC<BeybladeGameProps> = ({
                         <h1 className="text-2xl text-center">$beyblade | <strong>Let it rip.</strong> | BattleBlade</h1>
                     </div>
 
-                    {/* Right navigation */}
-                    <nav className="flex justify-end gap-4">
+                    {/* Mobile Menu Button */}
+                    <Button
+                        variant="ghost"
+                        onClick={() => setIsMenuOpen(!isMenuOpen)}
+                        className="md:hidden text-silver-300 hover:bg-gray-900 border border-gray-700 hover:border-silver-400"
+                    >
+                        <Menu size={24} />
+                    </Button>
+
+                    {/* Desktop Navigation */}
+                    <nav className="hidden md:flex justify-end gap-4">
                         <Button
                             variant="ghost"
                             onClick={() => navigate('/generator')}
@@ -170,6 +181,50 @@ const BeybladeGame: React.FC<BeybladeGameProps> = ({
                         </Button>
                     </nav>
                 </div>
+
+                {/* Mobile Navigation Menu */}
+                {isMenuOpen && (
+                    <nav className="md:hidden mt-4 flex flex-col gap-2 animate-fade-in">
+                        <Button
+                            variant="ghost"
+                            onClick={() => navigate('/')}
+                            className="w-full text-silver-300 hover:bg-gray-900 border border-gray-700 hover:border-silver-400"
+                        >
+                            ← Back to Home
+                        </Button>
+                        <Button
+                            variant="ghost"
+                            onClick={() => navigate('/generator')}
+                            className="w-full text-silver-300 hover:bg-gray-900 border border-gray-700 hover:border-silver-400"
+                        >
+                            Generator
+                        </Button>
+                        <Button
+                            variant="ghost"
+                            onClick={() => navigate('/gallery')}
+                            className="text-silver-300 hover:bg-gray-900 border border-gray-700 hover:border-silver-400"
+                        >
+                            Gallery
+                        </Button>
+                        <Button
+                            asChild
+                            variant="ghost"
+                            className="w-full text-silver-300 hover:bg-gray-900 border border-gray-700 hover:border-silver-400"
+                        >
+                            <a
+                                href="https://x.com/i/communities/1928460541435273435"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center justify-center gap-2"
+                            >
+                                <svg width="16" height="16" viewBox="0 0 300 301" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M178.57 127.044L290.27 0H263.81L166.78 110.288L89.34 0H0L117.13 166.791L0 300H26.46L128.86 183.507L210.66 300H300M36.01 19.5237H76.66L263.79 281.435H223.13" fill="currentColor" />
+                                </svg>
+                                <span>Community</span>
+                            </a>
+                        </Button>
+                    </nav>
+                )}
             </header>
             <div
                 className={`beyblade-game-container ${className}`}

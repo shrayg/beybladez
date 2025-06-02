@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -93,3 +92,73 @@
     @apply bg-black text-white;
   }
 }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.generating-content {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes float1 {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(20px, -15px); }
+  50% { transform: translate(-10px, 20px); }
+  75% { transform: translate(-20px, -10px); }
+}
+
+@keyframes float2 {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(-15px, 25px); }
+  50% { transform: translate(25px, -15px); }
+  75% { transform: translate(-20px, 10px); }
+}
+
+@keyframes float3 {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(15px, -20px); }
+  50% { transform: translate(-25px, 15px); }
+  75% { transform: translate(10px, 20px); }
+}
+
+@keyframes float4 {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(-25px, -15px); }
+  50% { transform: translate(15px, 25px); }
+  75% { transform: translate(20px, -10px); }
+}
+
+@keyframes float5 {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(20px, 15px); }
+  50% { transform: translate(-15px, -25px); }
+  75% { transform: translate(-10px, 20px); }
+}
+
+#ellipse0 {
+  animation: float1 3s ease-in-out infinite;
+}
+
+#ellipse1 {
+  animation: float2 4s ease-in-out infinite;
+}
+
+#ellipse2 {
+  animation: float3 3.5s ease-in-out infinite;
+}
+
+#ellipse3 {
+  animation: float4 2.5s ease-in-out infinite;
+}
+
+#ellipse4 {
+  animation: float5 3.2s ease-in-out infinite;
+}
+
+

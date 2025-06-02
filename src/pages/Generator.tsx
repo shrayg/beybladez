@@ -7,6 +7,7 @@ import ImageUpload from "@/components/ImageUpload";
 import GeneratedImage from "@/components/GeneratedImage";
 import OpenAI from "openai";
 import { supabase, supabaseAdmin } from '@/lib/supabaseClient'
+import { Sparkles, Menu } from "lucide-react";
 
 
 const Generator = () => {
@@ -15,6 +16,7 @@ const Generator = () => {
   const [generatedImage, setGeneratedImage] = useState<string | null>(null);
   const [isGenerating, setIsGenerating] = useState(false);
   const [done, setDone] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
   const { toast } = useToast();
 
@@ -210,14 +212,14 @@ Do not mention or specify colors; instead, interpret the images mood and energy 
       {/* Header */}
       <header className="p-6 flex-shrink-0">
         <div className="container mx-auto grid grid-cols-3 items-center">
-          {/* Left navigation */}
-          <div className="flex justify-start">
+          {/* Left navigation - hidden on mobile */}
+          <div className="hidden md:flex justify-start">
             <Button
               variant="ghost"
               onClick={() => navigate('/')}
               className="text-white hover:bg-white/10"
             >
-                            ← Back to Home
+              ← Back to Home
             </Button>
           </div>
 
@@ -226,8 +228,17 @@ Do not mention or specify colors; instead, interpret the images mood and energy 
             <h1 className="text-2xl text-center font-bold">beybladez Generator</h1>
           </div>
 
-          {/* Right navigation */}
-          <nav className="flex justify-end gap-4">
+          {/* Mobile Menu Button */}
+          <Button
+            variant="ghost"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="md:hidden text-silver-300 hover:bg-gray-900 border border-gray-700 hover:border-silver-400"
+          >
+            <Menu size={24} />
+          </Button>
+
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex justify-end gap-4">
             <Button
               variant="ghost"
               onClick={() => navigate('/gallery')}
@@ -261,20 +272,63 @@ Do not mention or specify colors; instead, interpret the images mood and energy 
             </Button>
           </nav>
         </div>
+
+        {/* Mobile Navigation Menu */}
+        {isMenuOpen && (
+          <nav className="md:hidden mt-4 flex flex-col gap-2 animate-fade-in">
+            <Button
+              variant="ghost"
+              onClick={() => navigate('/')}
+              className="w-full text-silver-300 hover:bg-gray-900 border border-gray-700 hover:border-silver-400"
+            >
+              ← Back to Home
+            </Button>
+            <Button
+              variant="ghost"
+              onClick={() => navigate('/gallery')}
+              className="w-full text-silver-300 hover:bg-gray-900 border border-gray-700 hover:border-silver-400"
+            >
+              Gallery
+            </Button>
+            <Button
+              variant="ghost"
+              onClick={() => navigate('/beyblade')}
+              className="text-silver-300 hover:bg-gray-900 border border-gray-700 hover:border-silver-400"
+            >
+              Let it rip.
+            </Button>
+            <Button
+              asChild
+              variant="ghost"
+              className="w-full text-silver-300 hover:bg-gray-900 border border-gray-700 hover:border-silver-400"
+            >
+              <a
+                href="https://x.com/i/communities/1928460541435273435"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2"
+              >
+                <svg width="16" height="16" viewBox="0 0 300 301" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M178.57 127.044L290.27 0H263.81L166.78 110.288L89.34 0H0L117.13 166.791L0 300H26.46L128.86 183.507L210.66 300H300M36.01 19.5237H76.66L263.79 281.435H223.13" fill="currentColor" />
+                </svg>
+                <span>Community</span>
+              </a>
+            </Button>
+          </nav>
+        )}
       </header>
 
       {/* Main Content */}
       <main className="flex-grow container mx-auto px-6 py-12 overflow-y-auto">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+            <h2 style={{lineHeight: "1.5"}} className="text-6xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
               Create Your $beybladez
             </h2>
-            <p className="text-gray-300 text-lg">
+            <p className="text-gray-300 text-lg font-semibold">
               Upload any image and transform it into your personalized beybladez <br />
               <br />
             </p>
-            <h2 className="text-2xl text-gray-400 mt-4"><strong>become the blade.</strong></h2>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
@@ -288,6 +342,7 @@ Do not mention or specify colors; instead, interpret the images mood and energy 
                 disabled={!uploadedImage || isGenerating}
                 className="w-full mt-6 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white border-0 py-3 text-lg font-semibold disabled:opacity-50"
               >
+                <Sparkles className="w-4 h-4 mr-2" />
                 {isGenerating ? "Generating..." : "Generate beybladez"}
               </Button>
             </Card>
