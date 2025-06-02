@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Generator from "./pages/Generator";
 import Gallery from "./pages/Gallery";
+import Beyblade from "./pages/Beyblade";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -21,6 +22,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/generator" element={<Generator />} />
           <Route path="/gallery" element={<Gallery />} />
+          <Route path ="/beyblade" element={<Beyblade />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

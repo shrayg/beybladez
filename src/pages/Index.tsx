@@ -46,7 +46,7 @@ const Index = () => {
           <div className="bg-gray-900/80 backdrop-blur-sm rounded-2xl p-8 mb-12 border border-gray-700">
             <h3 className="text-lg font-semibold text-gray-300 mb-4">Official Contract Address (CA):</h3>
             <p className="text-silver-300 font-mono text-sm md:text-base break-all bg-black/50 p-4 rounded-lg border border-gray-600">
-              //S4kYvBGEP2AcpC2Nw4BjwhK9oXq7iXrHupwkgmQU7f5
+               ---CONTRACT ADDRESS SOON---
             </p>
           </div>
 
