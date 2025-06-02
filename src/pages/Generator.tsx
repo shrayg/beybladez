@@ -223,19 +223,21 @@ Do not mention or specify colors; instead, interpret the images mood and energy 
             </Button>
           </div>
 
-          {/* Centered title */}
-          <div className="flex justify-center">
-            <h1 className="text-2xl text-center font-bold">beybladez Generator</h1>
+          {/* Title - centered on desktop, left on mobile */}
+          <div className="flex md:justify-center col-start-1 md:col-start-2">
+            <h1 className="text-2xl font-bold">beybladez Generator</h1>
           </div>
 
-          {/* Mobile Menu Button */}
-          <Button
-            variant="ghost"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden text-silver-300 hover:bg-gray-900 border border-gray-700 hover:border-silver-400"
-          >
-            <Menu size={24} />
-          </Button>
+          {/* Mobile Menu Button - right aligned */}
+          <div className="flex justify-end">
+            <Button
+              variant="ghost"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="md:hidden text-silver-300 hover:bg-gray-900 border border-gray-700 hover:border-silver-400"
+            >
+              <Menu size={24} />
+            </Button>
+          </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex justify-end gap-4">
