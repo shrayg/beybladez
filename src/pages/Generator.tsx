@@ -225,7 +225,7 @@ Do not mention or specify colors; instead, interpret the images mood and energy 
 
           {/* Center: Title */}
           <div className="flex-1 flex justify-center">
-            <h1 className="text-2xl font-bold">beybladez Generator</h1>
+            <h1 className="text-2xl font-bold">$bladez Generator</h1>
           </div>
 
           {/* Right: Desktop Navigation */}
@@ -325,10 +325,10 @@ Do not mention or specify colors; instead, interpret the images mood and energy 
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h2 style={{lineHeight: "1.5"}} className="text-6xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-              Create Your $beybladez
+              Create Your $bladez
             </h2>
             <p className="text-gray-300 text-lg font-semibold">
-              Upload any image and transform it into your personalized beybladez <br />
+              Upload any image and transform it into your personalized $bladez <br />
               <br />
             </p>
           </div>

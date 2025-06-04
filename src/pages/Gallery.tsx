@@ -171,10 +171,10 @@ const Gallery = () => {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-5">
-              Generated beybladez Gallery
+              Generated $bladez Gallery
             </h2>
             <p className="text-gray-300 text-lg">
-              Explore all the amazing beybladez created by our community
+              Explore all the amazing $bladez created by our community
             </p>
           </div>
 
@@ -183,13 +183,13 @@ const Gallery = () => {
               <div className="text-gray-400 mb-6">
                 <div className="text-6xl mb-4">🎨</div>
                 <h3 className="text-xl font-semibold mb-2">No images generated yet</h3>
-                <p className="text-gray-500">Start creating your first beybladez!</p>
+                <p className="text-gray-500">Start creating your first $bladez!</p>
               </div>
               <Button
                 onClick={() => navigate('/generator')}
                 className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white border-0 px-8 py-3"
               >
-                Create Your <strong>beybladez</strong>
+                Create Your <strong>$bladez</strong>
               </Button>
             </Card>
           ) : (
@@ -199,7 +199,7 @@ const Gallery = () => {
                   <div className="aspect-square rounded-lg overflow-hidden mb-4 bg-white">
                     <img
                       src={image.url}
-                      alt={`Generated beybladez ${image.id}`}
+                      alt={`Generated $bladez ${image.id}`}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>

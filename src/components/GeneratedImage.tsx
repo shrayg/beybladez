@@ -100,7 +100,7 @@ const GeneratedImage = ({ imageUrl, isGenerating }: GeneratedImageProps) => {
       <Card className="bg-gray-800/50 border-gray-600 p-8 text-center">
         <div className="text-gray-400">
           <div className="text-4xl mb-4">🎯</div>
-          <p className="text-gray-400">Your personalized <strong>beybladez</strong> will appear here</p>
+          <p className="text-gray-400">Your personalized <strong>bladez</strong> will appear here</p>
         </div>
       </Card>
     );
@@ -112,7 +112,7 @@ const GeneratedImage = ({ imageUrl, isGenerating }: GeneratedImageProps) => {
         <div className="aspect-square rounded-lg overflow-hidden bg-white">
           <img 
             src={imageUrl} 
-            alt="Generated beybladez" 
+            alt="Generated $bladez" 
             className="w-full h-full object-cover"
           />
         </div>
