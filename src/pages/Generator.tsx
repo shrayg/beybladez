@@ -97,7 +97,7 @@ Do not mention or specify colors; instead, interpret the images mood and energy 
       }
 
       const response = await openai.responses.create({
-        model: "gpt-4o",
+        model: "o3",
         input: [
           {
             role: "user",

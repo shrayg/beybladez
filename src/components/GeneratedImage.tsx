@@ -32,6 +32,18 @@ const GeneratedImage = ({ imageUrl, isGenerating }: GeneratedImageProps) => {
     "Maximizing RPM Output...",
     "Stabilizing Gyro Systems...",
     "Let it R.I.P-ing...",
+    "Greasing the Spin Tracks...",
+    "Synchronizing with Sacred Bit-Beast...",
+    "Recharging Energy Layers...",
+    "Fortifying Metal Fusion...",
+    "Balancing Rubber Rings...",
+    "Scanning Opponent’s Battle Aura...",
+    "Injecting Spinorium Fuel...",
+    "Calibrating Bey-OS Kernel...",
+    "Rewiring Hyper Strike Gear...",
+    "Plotting Trajectory for Epic Slam...",
+    "Securing the Launcher Clamp...",
+    "Activating Turbo Burst Protocol...",
   ];
 
   const [loadingMessageIndex, setLoadingMessageIndex] = React.useState(0);
@@ -49,7 +61,7 @@ const GeneratedImage = ({ imageUrl, isGenerating }: GeneratedImageProps) => {
     return (
       <Card className="bg-gray-800/50 border-gray-600 p-3 text-center flex flex-col items-center justify-center gap-3">
         <svg className="w-full h-full rounded generating-content" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <g clip-path="url(#clip0_386_47)">
+          <g clipPath="url(#clip0_386_47)">
             <rect width="800" height="800" fill="black" />
             <g filter="url(#filter0_f_386_47)">
               <ellipse id="ellipse0" cx="584.204" cy="238.999" rx="194.083" ry="202.219" fill="url(#paint0_linear_386_47)" />
@@ -60,30 +72,30 @@ const GeneratedImage = ({ imageUrl, isGenerating }: GeneratedImageProps) => {
             </g>
           </g>
           <defs>
-            <filter id="filter0_f_386_47" x="-268" y="-363" width="1346.29" height="1512.26" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <filter id="filter0_f_386_47" x="-268" y="-363" width="1346.29" height="1512.26" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
               <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
               <feGaussianBlur stdDeviation="150" result="effect1_foregroundBlur_386_47" />
             </filter>
             <linearGradient id="paint0_linear_386_47" x1="390.12" y1="238.999" x2="778.287" y2="238.999" gradientUnits="userSpaceOnUse">
-              <stop stop-color="#0499EA" />
-              <stop offset="1" stop-color="#0499EA" stop-opacity="0.7" />
+              <stop stopColor="#0499EA" />
+              <stop offset="1" stopColor="#0499EA" stopOpacity="0.7" />
             </linearGradient>
             <linearGradient id="paint1_linear_386_47" x1="283.966" y1="460.161" x2="737.786" y2="460.161" gradientUnits="userSpaceOnUse">
-              <stop stop-color="#02D79E" />
-              <stop offset="1" stop-color="#02D79E" stop-opacity="0.7" />
+              <stop stopColor="#02D79E" />
+              <stop offset="1" stopColor="#02D79E" stopOpacity="0.7" />
             </linearGradient>
             <linearGradient id="paint2_linear_386_47" x1="32" y1="576.159" x2="335.045" y2="576.159" gradientUnits="userSpaceOnUse">
-              <stop stop-color="#85F975" />
-              <stop offset="1" stop-color="#85F975" stop-opacity="0.7" />
+              <stop stopColor="#85F975" />
+              <stop offset="1" stopColor="#85F975" stopOpacity="0.7" />
             </linearGradient>
             <linearGradient id="paint3_linear_386_47" x1="355" y1="647.632" x2="777.718" y2="647.632" gradientUnits="userSpaceOnUse">
-              <stop stop-color="#93C9EB" />
-              <stop offset="1" stop-color="#93C9EB" stop-opacity="0.7" />
+              <stop stopColor="#93C9EB" />
+              <stop offset="1" stopColor="#93C9EB" stopOpacity="0.7" />
             </linearGradient>
             <linearGradient id="paint4_linear_386_47" x1="49" y1="159.74" x2="335.176" y2="159.74" gradientUnits="userSpaceOnUse">
-              <stop stop-color="#BB83F9" />
-              <stop offset="1" stop-color="#BB83F9" stop-opacity="0.7" />
+              <stop stopColor="#BB83F9" />
+              <stop offset="1" stopColor="#BB83F9" stopOpacity="0.7" />
             </linearGradient>
             <clipPath id="clip0_386_47">
               <rect width="800" height="800" fill="white" />
