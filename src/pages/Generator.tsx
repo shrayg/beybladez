@@ -211,114 +211,113 @@ Do not mention or specify colors; instead, interpret the images mood and energy 
     <div className="flex flex-col h-screen bg-black text-white">
       {/* Header */}
       <header className="p-6 flex-shrink-0">
-        <div className="container mx-auto flex items-center justify-between">
-          {/* Left: Back to Home (desktop only) */}
-          <div className="hidden md:flex flex-shrink-0">
-            <Button
-              variant="ghost"
-              onClick={() => navigate('/')} 
-              className="text-white hover:bg-white/10"
-            >
-              ← Back to Home
-            </Button>
-          </div>
+  <div className="container mx-auto grid grid-cols-3 items-center">
+    {/* Left navigation - hidden on mobile */}
+    <div className="hidden md:flex justify-start">
+      <Button
+        variant="ghost"
+        onClick={() => navigate('/')}
+        className="text-white hover:bg-white/10"
+      >
+        ← Back to Home
+      </Button>
+    </div>
 
-          {/* Center: Title */}
-          <div className="flex-1 flex justify-center">
-            <h1 className="text-2xl font-bold">$beyblade Generator</h1>
-          </div>
+    {/* Centered title */}
+    <div className="flex justify-center">
+      <h1 className="text-2xl text-center font-bold">$beyblade Generator</h1>
+    </div>
 
-          {/* Right: Desktop Navigation */}
-          <nav className="hidden md:flex gap-4 flex-shrink-0">
-            <Button
-              variant="ghost"
-              onClick={() => navigate('/gallery')}
-              className="text-silver-300 hover:bg-gray-900 border border-gray-700 hover:border-silver-400"
-            >
-              Gallery
-            </Button>
-            <Button
-              variant="ghost"
-              onClick={() => navigate('/beyblade')}
-              className="text-silver-300 hover:bg-gray-900 border border-gray-700 hover:border-silver-400"
-            >
-              Let it rip.
-            </Button>
-            <Button
-              asChild
-              variant="ghost"
-              className="text-silver-300 hover:bg-gray-900 border border-gray-700 hover:border-silver-400"
-            >
-              <a
-                href="https://x.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2"
-              >
-                <svg width="16" height="16" viewBox="0 0 300 301" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M178.57 127.044L290.27 0H263.81L166.78 110.288L89.34 0H0L117.13 166.791L0 300H26.46L128.86 183.507L210.66 300H300M36.01 19.5237H76.66L263.79 281.435H223.13" fill="currentColor" />
-                </svg>
-                <span>Community</span>
-              </a>
-            </Button>
-          </nav>
+    {/* Mobile Menu Button */}
+    <Button
+      variant="ghost"
+      onClick={() => setIsMenuOpen(!isMenuOpen)}
+      className="md:hidden text-silver-300 hover:bg-gray-900 border border-gray-700 hover:border-silver-400"
+    >
+      <Menu size={24} />
+    </Button>
 
-          {/* Mobile Menu Button - right aligned */}
-          <div className="flex md:hidden justify-end">
-            <Button
-              variant="ghost"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-silver-300 hover:bg-gray-900 border border-gray-700 hover:border-silver-400"
-            >
-              <Menu size={24} />
-            </Button>
-          </div>
-        </div>
+    {/* Desktop Navigation */}
+    <nav className="hidden md:flex justify-end gap-4">
+      <Button
+        variant="ghost"
+        onClick={() => navigate('/gallery')}
+        className="text-silver-300 hover:bg-gray-900 border border-gray-700 hover:border-silver-400"
+      >
+        Gallery
+      </Button>
+      <Button
+        variant="ghost"
+        onClick={() => navigate('/beyblade')}
+        className="text-silver-300 hover:bg-gray-900 border border-gray-700 hover:border-silver-400"
+      >
+        Let it rip.
+      </Button>
+      <Button
+        asChild
+        variant="ghost"
+        className="text-silver-300 hover:bg-gray-900 border border-gray-700 hover:border-silver-400"
+      >
+        <a
+          href="https://x.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2"
+        >
+          <svg width="16" height="16" viewBox="0 0 300 301" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M178.57 127.044L290.27 0H263.81L166.78 110.288L89.34 0H0L117.13 166.791L0 300H26.46L128.86 183.507L210.66 300H300M36.01 19.5237H76.66L263.79 281.435H223.13" fill="currentColor" />
+          </svg>
+          <span>Community</span>
+        </a>
+      </Button>
+    </nav>
+  </div>
 
-        {/* Mobile Navigation Menu */}
-        {isMenuOpen && (
-          <nav className="md:hidden mt-4 flex flex-col gap-2 animate-fade-in">
-            <Button
-              variant="ghost"
-              onClick={() => navigate('/')}
-              className="w-full text-silver-300 hover:bg-gray-900 border border-gray-700 hover:border-silver-400"
-            >
-              ← Back to Home
-            </Button>
-            <Button
-              variant="ghost"
-              onClick={() => navigate('/gallery')}
-              className="w-full text-silver-300 hover:bg-gray-900 border border-gray-700 hover:border-silver-400"
-            >
-              Gallery
-            </Button>
-            <Button
-              variant="ghost"
-              onClick={() => navigate('/beyblade')}
-              className="text-silver-300 hover:bg-gray-900 border border-gray-700 hover:border-silver-400"
-            >
-              Let it rip.
-            </Button>
-            <Button
-              asChild
-              variant="ghost"
-              className="w-full text-silver-300 hover:bg-gray-900 border border-gray-700 hover:border-silver-400"
-            >
-              <a
-                href="https://x.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2"
-              >
-                <svg width="16" height="16" viewBox="0 0 300 301" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M178.57 127.044L290.27 0H263.81L166.78 110.288L89.34 0H0L117.13 166.791L0 300H26.46L128.86 183.507L210.66 300H300M36.01 19.5237H76.66L263.79 281.435H223.13" fill="currentColor" />
-                </svg>
-                <span>Community</span>
-              </a>
-            </Button>
-          </nav>
-        )}
-      </header>
+  {/* Mobile Navigation Menu */}
+  {isMenuOpen && (
+    <nav className="md:hidden mt-4 flex flex-col gap-2 animate-fade-in">
+      <Button
+        variant="ghost"
+        onClick={() => navigate('/')}
+        className="w-full text-silver-300 hover:bg-gray-900 border border-gray-700 hover:border-silver-400"
+      >
+        ← Back to Home
+      </Button>
+      <Button
+        variant="ghost"
+        onClick={() => navigate('/gallery')}
+        className="w-full text-silver-300 hover:bg-gray-900 border border-gray-700 hover:border-silver-400"
+      >
+        Gallery
+      </Button>
+      <Button
+        variant="ghost"
+        onClick={() => navigate('/beyblade')}
+        className="w-full text-silver-300 hover:bg-gray-900 border border-gray-700 hover:border-silver-400"
+      >
+        Let it rip.
+      </Button>
+      <Button
+        asChild
+        variant="ghost"
+        className="w-full text-silver-300 hover:bg-gray-900 border border-gray-700 hover:border-silver-400"
+      >
+        <a
+          href="https://x.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center justify-center gap-2"
+        >
+          <svg width="16" height="16" viewBox="0 0 300 301" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M178.57 127.044L290.27 0H263.81L166.78 110.288L89.34 0H0L117.13 166.791L0 300H26.46L128.86 183.507L210.66 300H300M36.01 19.5237H76.66L263.79 281.435H223.13" fill="currentColor" />
+          </svg>
+          <span>Community</span>
+        </a>
+      </Button>
+    </nav>
+  )}
+</header>
+
 
       {/* Main Content */}
       <main className="flex-grow container mx-auto px-6 py-12 overflow-y-auto">
