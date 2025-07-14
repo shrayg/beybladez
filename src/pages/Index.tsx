@@ -10,7 +10,7 @@ const Index = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleCopy = () => {
-    const textToCopy = "53qDeKkfFwvSRv67WXePYrE3H76ND54VTWN4qcnBpump";
+    const textToCopy = "CA";
     navigator.clipboard.writeText(textToCopy);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
@@ -42,7 +42,7 @@ const Index = () => {
       {/* Header */}
       <header className="p-4 md:p-6 animate-fade-in" style={{ animationDelay: '0.2s' }}>
         <div className="container mx-auto flex justify-between items-center">
-          <h1 className="text-xl md:text-2xl font-bold text-silver-400">$bladez</h1>
+          <h1 className="text-xl md:text-2xl font-bold text-silver-400">$beyblade</h1>
           
           {/* Mobile Menu Button */}
           <Button
@@ -146,7 +146,7 @@ const Index = () => {
         <div className="max-w-4xl mx-auto flex flex-col gap-4">
           <div className="flex flex-col animate-fade-in" style={{ animationDelay: '0.4s' }}>
             <h1 style={{ color: 'transparent', backgroundClip: 'text', backgroundImage: 'linear-gradient(to right, #218bff, #c084fc, #db2777)', lineHeight: '140%' }} className="text-5xl md:text-7xl lg:text-8xl font-bold title-animate">
-              $bladez
+              $beyblade
             </h1>
             <p className="text-lg md:text-xl lg:text-2xl text-gray-400 mb-8 md:mb-12 leading-relaxed">
               Let it rip!

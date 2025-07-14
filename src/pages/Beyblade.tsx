@@ -143,7 +143,7 @@ const BeybladeGame: React.FC<BeybladeGameProps> = ({
 
                     {/* Centered title */}
                     <div className="flex justify-center">
-                        <h1 className="text-2xl text-center">$bladez | <strong>Let it rip.</strong> | BattleBlade</h1>
+                        <h1 className="text-2xl text-center">$beyblade | <strong>Let it rip.</strong> | BattleBlade</h1>
                     </div>
 
                     {/* Mobile Menu Button */}
