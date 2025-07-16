@@ -10,7 +10,7 @@ const Index = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleCopy = () => {
-    const textToCopy = "CA";
+    const textToCopy = "Contract Address:";
     navigator.clipboard.writeText(textToCopy);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
@@ -82,7 +82,7 @@ const Index = () => {
               className="text-silver-300 hover:bg-gray-900 border border-gray-700 hover:border-silver-400"
             >
               <a
-                href="https://x.com"
+                href="https://x.com/i/communities/1945327755693842673"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2"
@@ -126,7 +126,7 @@ const Index = () => {
               className="w-full text-silver-300 hover:bg-gray-900 border border-gray-700 hover:border-silver-400"
             >
               <a
-                href="https://x.com"
+                href="https://x.com/i/communities/1945327755693842673"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2"
@@ -156,7 +156,7 @@ const Index = () => {
           <div className="flex flex-col gap-4 p-6 md:p-10 rounded-lg shadow-lg bg-gradient-to-r from-gray-800 to-gray-700 gap-2 hover:bg-[length:200%_200%] hover:bg-right text-silver-300 border border-gray-600 transition-all duration-700 group animate-fade-in" style={{ backgroundSize: '200% 200%', backgroundPosition: 'left', animationDelay: '0.6s' }}>
             <h1 className="text-lg md:text-xg font-semibold text-gray-300">Official Contract Address (CA):</h1>
             <code className="flex flex-col md:flex-row justify-between items-center text-silver-300 font-mono text-sm md:text-base break-all bg-black/20 p-2 rounded-lg border border-white/10 transition-all duration-300 group-hover:border-white/30 group-hover:bg-black/30">
-              <span className="flex-1 text-center mb-2 md:mb-0"></span>
+              <span className="flex-1 text-center mb-2 md:mb-0"> Contract Address: </span>
               <div
                 onClick={handleCopy}
                 className="p-1 cursor-pointer flex flex-col gap-4 rounded border-[1px] border-white/10 hover:bg-white/10 transition-colors relative"

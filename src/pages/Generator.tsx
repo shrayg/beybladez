@@ -259,7 +259,7 @@ Do not mention or specify colors; instead, interpret the images mood and energy 
         className="text-silver-300 hover:bg-gray-900 border border-gray-700 hover:border-silver-400"
       >
         <a
-          href="https://x.com"
+          href="https://x.com/i/communities/1945327755693842673"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2"
@@ -303,7 +303,7 @@ Do not mention or specify colors; instead, interpret the images mood and energy 
         className="w-full text-silver-300 hover:bg-gray-900 border border-gray-700 hover:border-silver-400"
       >
         <a
-          href="https://x.com"
+          href="https://x.com/i/communities/1945327755693842673"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center justify-center gap-2"
