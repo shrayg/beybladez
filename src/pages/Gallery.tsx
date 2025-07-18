@@ -107,7 +107,7 @@ const Gallery = () => {
               className="text-silver-300 hover:bg-gray-900 border border-gray-700 hover:border-silver-400"
             >
               <a
-                href="https://x.com/i/communities/1945327755693842673"
+                href="https://x.com/i/communities/1946079126932062682/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2"
@@ -151,7 +151,7 @@ const Gallery = () => {
               className="w-full text-silver-300 hover:bg-gray-900 border border-gray-700 hover:border-silver-400"
             >
               <a
-                href="https://x.com/i/communities/1945327755693842673"
+                href="https://x.com/i/communities/1946079126932062682/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2"
@@ -172,12 +172,12 @@ const Gallery = () => {
           <div className="text-center mb-12">
             
               <h2 style={{lineHeight: "1.5"}} className="text-6xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-5">
-              Generated $beyblade Gallery
+              Generated $beys Gallery
               </h2>
               
             
             <p className="text-gray-300 text-lg">
-              Explore all the amazing $beyblade created by our community
+              Explore all the amazing $beys created by our community
             </p>
           </div>
 
@@ -186,13 +186,13 @@ const Gallery = () => {
               <div className="text-gray-400 mb-6">
                 <div className="text-6xl mb-4">🎨</div>
                 <h3 className="text-xl font-semibold mb-2">No images generated yet</h3>
-                <p className="text-gray-500">Start creating your first $beyblade!</p>
+                <p className="text-gray-500">Start creating your first $beys!</p>
               </div>
               <Button
                 onClick={() => navigate('/generator')}
                 className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white border-0 px-8 py-3"
               >
-                Create Your <strong>$beyblade</strong>
+                Create Your <strong>$beys</strong>
               </Button>
             </Card>
           ) : (

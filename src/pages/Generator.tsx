@@ -225,7 +225,7 @@ Do not mention or specify colors; instead, interpret the images mood and energy 
 
     {/* Centered title */}
     <div className="flex justify-center">
-      <h1 className="text-2xl text-center font-bold">$beyblade Generator</h1>
+      <h1 className="text-2xl text-center font-bold">$beys Generator</h1>
     </div>
 
     {/* Mobile Menu Button */}
@@ -259,7 +259,7 @@ Do not mention or specify colors; instead, interpret the images mood and energy 
         className="text-silver-300 hover:bg-gray-900 border border-gray-700 hover:border-silver-400"
       >
         <a
-          href="https://x.com/i/communities/1945327755693842673"
+          href="https://x.com/i/communities/1946079126932062682/"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2"
@@ -303,7 +303,7 @@ Do not mention or specify colors; instead, interpret the images mood and energy 
         className="w-full text-silver-300 hover:bg-gray-900 border border-gray-700 hover:border-silver-400"
       >
         <a
-          href="https://x.com/i/communities/1945327755693842673"
+          href="https://x.com/i/communities/1946079126932062682/"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center justify-center gap-2"
@@ -324,10 +324,10 @@ Do not mention or specify colors; instead, interpret the images mood and energy 
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h2 style={{lineHeight: "1.5"}} className="text-6xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-              Create Your $beyblade
+              Create Your $beys
             </h2>
             <p className="text-gray-300 text-lg font-semibold">
-              Upload any image and transform it into your personalized $beyblade <br />
+              Upload any image and transform it into your personalized $beys <br />
               <br />
             </p>
           </div>

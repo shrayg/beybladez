@@ -143,7 +143,7 @@ const BeybladeGame: React.FC<BeybladeGameProps> = ({
 
                     {/* Centered title */}
                     <div className="flex justify-center">
-                        <h1 className="text-2xl text-center">$beyblade | <strong>Let it rip.</strong> | BattleBlade</h1>
+                        <h1 className="text-2xl text-center">$beys | <strong>Let it rip.</strong> | BattleBlade</h1>
                     </div>
 
                     {/* Mobile Menu Button */}
@@ -177,7 +177,7 @@ const BeybladeGame: React.FC<BeybladeGameProps> = ({
                             className="text-silver-300 hover:bg-gray-900 border border-gray-700 hover:border-silver-400"
                         >
                             <a
-                                href="https://x.com/i/communities/1945327755693842673"
+                                href="https://x.com/i/communities/1946079126932062682/"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center gap-2"
@@ -221,7 +221,7 @@ const BeybladeGame: React.FC<BeybladeGameProps> = ({
                             className="w-full text-silver-300 hover:bg-gray-900 border border-gray-700 hover:border-silver-400"
                         >
                             <a
-                                href="https://x.com/i/communities/1945327755693842673"
+                                href="https://x.com/i/communities/1946079126932062682/"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center justify-center gap-2"

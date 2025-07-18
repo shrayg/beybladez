@@ -124,7 +124,7 @@ const GeneratedImage = ({ imageUrl, isGenerating }: GeneratedImageProps) => {
         <div className="aspect-square rounded-lg overflow-hidden bg-white">
           <img 
             src={imageUrl} 
-            alt="Generated $beyblade" 
+            alt="Generated $beys" 
             className="w-full h-full object-cover"
           />
         </div>
